@@ -7,7 +7,15 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: () => import(/* webpackChunkName: "about" */ '@/views/Home')
+    component: () => import(/* webpackChunkName: "about" */ '@/views/Home'),
+    meta: {
+      keepAlive: true
+    }
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: () => import(/* webpackChunkName: "about" */ '@/views/Login')
   }
 ]
 

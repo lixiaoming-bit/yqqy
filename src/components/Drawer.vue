@@ -3,14 +3,11 @@
     <!-- 头像部分 -->
     <div class="avatar-wrapper">
       <div>
-        <img
-          class="avatar"
-          src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic3.zhimg.com%2F50%2Fv2-b5da6c1b2a3fb6799e19e181fd6e77ab_hd.jpg&refer=http%3A%2F%2Fpic3.zhimg.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1618908397&t=4ba806c4a04f5a3782d6fc424643e582"
-        />
+        <img referrer="no-referrer|origin|unsafe-url" class="avatar" :src="userInfo.avatar_url" />
         <mu-icon class="vip" value=":iconfont icon-vip" size="24" color="#e98f36"></mu-icon>
       </div>
-      <div class="user-name">李晓明</div>
-      <div class="user-slogan">这个人很懒什么也没有留下...</div>
+      <div class="user-name">{{ userInfo.name }}</div>
+      <div class="user-slogan">{{ userInfo.description || '这个人很懒，什么也没有留下...' }}</div>
     </div>
     <mu-list>
       <mu-list-item button>
@@ -22,18 +19,27 @@
           ></mu-icon>
         </mu-list-item-action>
         <mu-list-item-title>我的知识库</mu-list-item-title>
+        <mu-list-item-action v-if="userInfo.books_count > 0">
+          <mu-badge :content="String(userInfo.books_count)"></mu-badge>
+        </mu-list-item-action>
       </mu-list-item>
       <mu-list-item button>
         <mu-list-item-action>
           <mu-icon class="icon-drawer" value=":iconfont icon-guanzhu" size="24"></mu-icon>
         </mu-list-item-action>
         <mu-list-item-title>我的关注</mu-list-item-title>
+        <mu-list-item-action v-if="userInfo.following_count > 0">
+          <mu-badge :content="String(userInfo.following_count)"></mu-badge>
+        </mu-list-item-action>
       </mu-list-item>
       <mu-list-item button>
         <mu-list-item-action>
           <mu-icon class="icon-drawer" value=":iconfont icon-ziyuan" size="24"></mu-icon>
         </mu-list-item-action>
         <mu-list-item-title>我的粉丝</mu-list-item-title>
+        <mu-list-item-action v-if="userInfo.followers_count > 0">
+          <mu-badge :content="String(userInfo.followers_count)"></mu-badge>
+        </mu-list-item-action>
       </mu-list-item>
       <mu-list-item button>
         <mu-list-item-action>
@@ -73,7 +79,7 @@
         <mu-list-item-action>
           <mu-icon class="icon-drawer" value=":iconfont icon-login-out" size="24"></mu-icon>
         </mu-list-item-action>
-        <mu-list-item-title>退出</mu-list-item-title>
+        <mu-list-item-title>退出登录</mu-list-item-title>
       </mu-list-item>
     </mu-list>
   </mu-drawer>
@@ -93,7 +99,8 @@ export default {
   },
   computed: {
     ...mapState({
-      drawer: state => state.app.drawer
+      drawer: state => state.app.drawer,
+      userInfo: state => state.app.userInfo
     })
   },
   watch: {

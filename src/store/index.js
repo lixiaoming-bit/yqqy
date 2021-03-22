@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
+import getters from './getters'
+
 let appVuex = []
 try {
   const context = require.context('./modules', true, /\/.*\.js$/)
@@ -33,6 +35,6 @@ export default new Vuex.Store({
   modules: appModulesObj,
   state: {},
   mutations: {},
-  actions: {}
-  // getters
+  actions: {},
+  getters
 })

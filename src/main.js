@@ -7,6 +7,9 @@ import store from './store'
 // 引入UI
 import './utils/muse-ui'
 
+// 引入工具集
+import './utils/ls'
+
 Vue.config.productionTip = false
 
 new Vue({

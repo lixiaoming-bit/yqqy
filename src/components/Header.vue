@@ -3,9 +3,12 @@
     <mu-button icon slot="left" @click="handleToggle">
       <mu-icon value="menu" size="22"></mu-icon>
     </mu-button>
-    <span class="title">轻语</span>
-    <!-- <mu-menu cover>
-      <mu-list slot="content">
+    <div class="header-content-wrap" ref="btn" @click="open = !open">
+      <div class="title">轻语</div>
+      <div class="triangle"></div>
+    </div>
+    <mu-popover cover :open.sync="open" :trigger="trigger" v-elevation="1">
+      <mu-list>
         <mu-list-item button>
           <mu-list-item-title>Refresh</mu-list-item-title>
         </mu-list-item>
@@ -22,7 +25,7 @@
           <mu-list-item-title>Sign out</mu-list-item-title>
         </mu-list-item>
       </mu-list>
-    </mu-menu> -->
+    </mu-popover>
     <mu-button icon slot="right">
       <mu-icon value="search" size="22"></mu-icon>
     </mu-button>
@@ -37,7 +40,10 @@ export default {
   components: {},
   props: {},
   data() {
-    return {}
+    return {
+      open: false,
+      trigger: null
+    }
   },
   computed: {
     ...mapState({
@@ -45,7 +51,9 @@ export default {
     })
   },
   watch: {},
-  mounted() {},
+  mounted() {
+    this.trigger = this.$refs.btn
+  },
   created() {},
   methods: {
     ...mapMutations(['TOGGLE_DRAWER']),
@@ -57,7 +65,24 @@ export default {
 </script>
 
 <style scoped lang="less">
-.title {
-  font-size: 16px;
+.header-content-wrap {
+  position: relative;
+  line-height: 50px;
+  width: 80px;
+  .title {
+    font-size: 16px;
+  }
+  .triangle {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: 0px;
+    width: 0px;
+    border-radius: 4px;
+    border-top: 5px solid transparent;
+    border-left: 5px solid #fff;
+    border-bottom: 5px solid transparent;
+    transform: rotate(45deg);
+  }
 }
 </style>
