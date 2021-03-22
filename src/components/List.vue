@@ -1,5 +1,5 @@
 <template>
-  <div class="core-container">
+  <div class="scroll-container">
     <div class="scroll-wrapper" ref="scroll">
       <div class="scroll-content">
         <slot />
@@ -24,6 +24,7 @@ export default {
   beforeDestroy() {
     this.bs.destroy()
   },
+
   methods: {
     init() {
       this.bs = new BScroll(this.$refs.scroll, {

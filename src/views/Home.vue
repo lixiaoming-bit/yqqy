@@ -1,8 +1,10 @@
 <template>
   <div class="home">
     <Header />
+    <div class="view-wrap" :style="contentHeight">
+      <router-view />
+    </div>
     <Drawer />
-    <router-view />
   </div>
 </template>
 
@@ -20,6 +22,12 @@ export default {
   created() {
     // 获取用户信息
     this._getUserInfo()
+  },
+  computed: {
+    contentHeight() {
+      const maxHeight = window.innerHeight - 56 + 'px'
+      return { maxHeight, height: maxHeight, overflow: 'hidden' }
+    }
   },
   methods: {
     async _getUserInfo() {
