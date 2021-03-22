@@ -7,10 +7,22 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: () => import(/* webpackChunkName: "about" */ '@/views/Home'),
+    redirect: '/my-knowledge-base-list',
     meta: {
       keepAlive: true
-    }
+    },
+    component: () => import(/* webpackChunkName: "about" */ '@/views/Home'),
+    children: [
+      {
+        meta: {
+          keepAlive: true
+        },
+        path: '/my-knowledge-base-list',
+        name: 'MyKnowledgeBaseList',
+        component: () =>
+          import(/* webpackChunkName: "about" */ '@/views/Knowledge/MyKnowledgeBaseList')
+      }
+    ]
   },
   {
     path: '/login',

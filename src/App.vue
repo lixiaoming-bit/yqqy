@@ -46,22 +46,21 @@ export default {
   fill: currentColor;
   overflow: hidden;
 }
-.left-slide-enter,
-.right-slide-leave-to {
-  opacity: 0;
+.left-slide-enter {
+  z-index: 100;
+  height: 100%;
   position: absolute;
   transform: translateX(100%);
 }
-.left-slide-leave-to,
-.right-slide-enter {
-  opacity: 0;
+.left-slide-leave-to {
   position: absolute;
-  transform: translateX(-100%);
+  width: 100%;
+  /* opacity: 0; */
+  /* position: absolute; */
+  /* transform: translateX(-100%); */
 }
 .left-slide-enter-active,
-.left-slide-leave-active,
-.right-slide-enter-active,
-.right-slide-leave-active {
+.left-slide-leave-active {
   transition: opacity linear 0.25s, transform linear 0.4s;
 }
 </style>

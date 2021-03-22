@@ -1,5 +1,5 @@
 <template>
-  <mu-drawer :open="drawer" :docked="false" left @close="handleClickOutside">
+  <mu-drawer :open="drawer" :docked="false" left @close="handleDrawerClose">
     <!-- 头像部分 -->
     <div class="avatar-wrapper">
       <div>
@@ -10,7 +10,7 @@
       <div class="user-slogan">{{ userInfo.description || '这个人很懒，什么也没有留下...' }}</div>
     </div>
     <mu-list>
-      <mu-list-item button>
+      <mu-list-item button @click="handleDrawerItemClick(1)">
         <mu-list-item-action>
           <mu-icon
             class="icon-drawer"
@@ -113,11 +113,25 @@ export default {
   created() {},
   methods: {
     ...mapMutations(['TOGGLE_DRAWER']),
-    handleClickOutside() {
+    // 关闭drawer
+    handleDrawerClose() {
       this.TOGGLE_DRAWER(!this.drawer)
     },
-    handleClose(value) {
-      console.log('value: ', value)
+    // 处理drawer内部点击事件
+    handleDrawerItemClick(type) {
+      switch (type) {
+        // 处理我的知识库
+        case 1:
+          this._ToKnowledgeBase()
+          break
+        default:
+          break
+      }
+      this.TOGGLE_DRAWER(!this.drawer)
+    },
+    // 切换知识库
+    _ToKnowledgeBase() {
+      this.$router.push({ path: '/my-knowledge-base' })
     }
   }
 }

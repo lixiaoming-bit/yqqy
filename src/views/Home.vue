@@ -2,6 +2,7 @@
   <div class="home">
     <Header />
     <Drawer />
+    <router-view />
   </div>
 </template>
 
