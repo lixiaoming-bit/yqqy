@@ -27,6 +27,9 @@
       </mu-list>
     </mu-popover>
     <mu-button icon slot="right">
+      <mu-icon value="refresh" size="22" @click="handleRefresh"></mu-icon>
+    </mu-button>
+    <mu-button icon slot="right">
       <mu-icon value="search" size="22"></mu-icon>
     </mu-button>
   </mu-appbar>
@@ -56,9 +59,12 @@ export default {
   },
   created() {},
   methods: {
-    ...mapMutations(['TOGGLE_DRAWER']),
+    ...mapMutations(['TOGGLE_DRAWER', 'REFRESH']),
     handleToggle() {
       this.TOGGLE_DRAWER(!this.drawer)
+    },
+    handleRefresh() {
+      this.REFRESH(true)
     }
   }
 }

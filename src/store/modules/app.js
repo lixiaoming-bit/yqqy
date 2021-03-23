@@ -3,9 +3,17 @@ export default {
   state: {
     token: '',
     userInfo: {},
-    drawer: false
+    drawer: false,
+    refresh: false,
+    currentScrollSlide: {
+      slideId: 0,
+      bs: null
+    }
   },
   mutations: {
+    REFRESH(state, payload) {
+      state.refresh = payload
+    },
     SET_TOKEN(state, payload) {
       state.token = payload
     },
@@ -14,6 +22,9 @@ export default {
     },
     SET_USER_INFO(state, payload) {
       state.userInfo = payload
+    },
+    SET_SCROLL_ACTION(state, payload) {
+      state.currentScrollSlide = payload
     }
   },
   actions: {

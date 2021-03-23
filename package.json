@@ -9,8 +9,12 @@
   },
   "dependencies": {
     "@better-scroll/core": "^2.2.1",
+    "@better-scroll/pull-down": "^2.2.1",
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
+    "dayjs": "^1.10.4",
+    "fastclick": "^1.0.6",
+    "lodash.debounce": "^4.0.8",
     "muse-ui": "^3.0.2",
     "register-service-worker": "^1.7.1",
     "vue": "^2.6.11",

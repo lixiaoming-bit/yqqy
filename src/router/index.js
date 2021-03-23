@@ -9,13 +9,13 @@ const routes = [
     name: 'Home',
     redirect: '/my-knowledge-base-list',
     meta: {
-      keepAlive: true
+      keepAlive: false
     },
     component: () => import(/* webpackChunkName: "about" */ '@/views/Home'),
     children: [
       {
         meta: {
-          keepAlive: true
+          keepAlive: false
         },
         path: '/my-knowledge-base-list',
         name: 'MyKnowledgeBaseList',
@@ -34,5 +34,9 @@ const routes = [
 const router = new VueRouter({
   routes
 })
+// const originalPush = router.prototype.push
 
+// router.prototype.push = function push(location) {
+//   return originalPush.call(this, location).catch(err => err)
+// }
 export default router
