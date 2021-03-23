@@ -6,7 +6,7 @@ export default {
   actions: {
     getRepoList({ commit }, params = {}) {
       getUserRepos(params).then(res => {
-        commit('SET_REPO_LIST', [...res.data, ...res.data, ...res.data])
+        commit('SET_REPO_LIST', res.data)
       })
     }
   },

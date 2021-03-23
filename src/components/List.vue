@@ -16,6 +16,14 @@
         <div class="scroll-content">
           <slot />
         </div>
+        <div class="pullup-tips">
+          <div v-if="!isPullUpLoad" class="before-trigger">
+            <span class="pullup-txt">下拉加载更多</span>
+          </div>
+          <div v-else class="after-trigger">
+            <span class="pullup-txt">正在加载</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -24,7 +32,9 @@
 <script>
 import BScroll from '@better-scroll/core'
 import PullDown from '@better-scroll/pull-down'
+import Pullup from '@better-scroll/pull-up'
 
+BScroll.use(Pullup)
 BScroll.use(PullDown)
 
 import { mapActions, mapMutations, mapState } from 'vuex'
@@ -38,6 +48,7 @@ export default {
   data() {
     return {
       bs: null,
+      isPullUpLoad: false,
       beforePullDown: true,
       isPullingDown: false
     }
@@ -66,9 +77,11 @@ export default {
           bounceTime: TIME_BOUNCE,
           threshold: THRESHOLD,
           stop: STOP
-        }
+        },
+        pullUpLoad: true
       })
       this.bs.on('pullingDown', this._pullingDownHandler)
+      this.bs.on('pullingUp', this._pullingUpHandler)
     },
     handleClickOutSide() {
       if (this._bs) this._bs.scrollTo(0)
@@ -81,7 +94,7 @@ export default {
       setTimeout(() => {
         this._finishPullDown()
         this.isPullingDown = false
-      }, 5000)
+      }, 300)
     },
     _finishPullDown() {
       this.bs.finishPullDown()
@@ -89,6 +102,15 @@ export default {
         this.beforePullDown = true
         this.bs.refresh()
       }, TIME_BOUNCE + 100)
+    },
+    async _pullingUpHandler() {
+      this.isPullUpLoad = true
+      // await this.getRepoList()
+      setTimeout(() => {
+        this.bs.finishPullUp()
+        this.bs.refresh()
+        this.isPullUpLoad = false
+      }, 300)
     }
   }
 }
@@ -111,6 +133,12 @@ export default {
       box-sizing: border-box;
       transform: translateY(-100%) translateZ(0);
       text-align: center;
+    }
+    .pullup-tips {
+      background: #f5f6f7;
+      padding: 20px;
+      text-align: center;
+      color: #666;
     }
   }
 }

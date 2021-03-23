@@ -873,6 +873,13 @@
   dependencies:
     "@better-scroll/core" "^2.2.1"
 
+"@better-scroll/pull-up@^2.2.1":
+  version "2.2.1"
+  resolved "https://registry.npm.taobao.org/@better-scroll/pull-up/download/@better-scroll/pull-up-2.2.1.tgz#373027d2be81844dd7c5a1ab59f3dc43f6d7a08a"
+  integrity sha1-NzAn0r6BhE3XxaGrWfPcQ/bXoIo=
+  dependencies:
+    "@better-scroll/core" "^2.2.1"
+
 "@better-scroll/shared-utils@^2.2.1":
   version "2.2.1"
   resolved "https://registry.npm.taobao.org/@better-scroll/shared-utils/download/@better-scroll/shared-utils-2.2.1.tgz#eb024feee1d37598a9b04fc18ca0d8b31f34f704"

@@ -74,6 +74,10 @@ export default {
 </script>
 
 <style scoped lang="less">
+.mu-list {
+  padding-bottom: 0;
+  padding-top: 8px;
+}
 .list-item {
   width: 100vw;
   display: inline-block;
