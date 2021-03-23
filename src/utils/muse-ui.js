@@ -1,5 +1,9 @@
 import Vue from 'vue'
 import 'muse-ui/lib/styles/base.less'
+import 'muse-ui-message/dist/muse-ui-message.css'
+import Message from 'muse-ui-message'
+Vue.use(Message)
+
 import {
   Alert,
   AppBar,
@@ -46,6 +50,7 @@ import {
   // theme
 } from 'muse-ui'
 import 'muse-ui/lib/styles/theme.less'
+
 Vue.use(Alert)
 Vue.use(AppBar)
 Vue.use(AutoComplete)

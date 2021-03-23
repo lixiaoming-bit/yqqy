@@ -67,7 +67,7 @@ export default {
   },
   methods: {
     ...mapMutations(['SET_SCROLL_ACTION']),
-    ...mapActions(['getRepoList']),
+    ...mapActions(['getRepoList', 'deleteRepo', 'editRepo']),
     init() {
       this.bs = new BScroll(this.$refs.scroll, {
         probeType: 0,

@@ -17,6 +17,7 @@
     "fastclick": "^1.0.6",
     "lodash.debounce": "^4.0.8",
     "muse-ui": "^3.0.2",
+    "muse-ui-message": "^0.2.1",
     "register-service-worker": "^1.7.1",
     "vue": "^2.6.11",
     "vue-ls": "^3.2.2",

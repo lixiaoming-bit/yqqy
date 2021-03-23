@@ -1,4 +1,4 @@
-import { getUserRepos } from '@/api/repo'
+import { getUserRepos, deleteRepo } from '@/api/repo'
 export default {
   state: {
     repoList: []
@@ -7,6 +7,13 @@ export default {
     getRepoList({ commit }, params = {}) {
       getUserRepos(params).then(res => {
         commit('SET_REPO_LIST', res.data)
+      })
+    },
+    deleteRepo({ commit }, data = '') {
+      deleteRepo(data).then(() => {
+        getUserRepos().then(res => {
+          commit('SET_REPO_LIST', res.data)
+        })
       })
     }
   },

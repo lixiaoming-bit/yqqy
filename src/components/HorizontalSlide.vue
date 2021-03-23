@@ -7,8 +7,9 @@
           class="scroll-item"
           value="delete"
           style="border-right; 1px solid #f1f2f3"
+          @tap="publish('delete')"
         ></mu-icon>
-        <mu-icon class="scroll-item" value="edit"></mu-icon>
+        <mu-icon class="scroll-item" value="edit" @tap="publish('edit')"></mu-icon>
       </div>
     </div>
   </div>
@@ -67,12 +68,19 @@ export default {
         }
         this.SET_SCROLL_ACTION(currentScrollSlide)
       }
-    }, 100)
+    }, 100),
+    publish (text) {
+      this.$emit('action', text)
+    }
   }
 }
 </script>
 
 <style lang="less" scoped>
+.mu-modal-inner {
+  display: inline-block;
+  vertical-align: super;
+}
 .horizontal-container {
   .scroll-wrapper {
     width: 100vw;
