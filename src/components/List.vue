@@ -33,9 +33,11 @@
 import BScroll from '@better-scroll/core'
 import PullDown from '@better-scroll/pull-down'
 import Pullup from '@better-scroll/pull-up'
+import NestedScroll from '@better-scroll/nested-scroll'
 
 BScroll.use(Pullup)
 BScroll.use(PullDown)
+BScroll.use(NestedScroll)
 
 import { mapActions, mapMutations, mapState } from 'vuex'
 
@@ -70,6 +72,7 @@ export default {
     ...mapActions(['getRepoList', 'deleteRepo', 'editRepo']),
     init() {
       this.bs = new BScroll(this.$refs.scroll, {
+        nestedScroll: true,
         probeType: 0,
         useTransition: false,
         tap: 'tap',

@@ -866,6 +866,20 @@
   dependencies:
     "@better-scroll/shared-utils" "^2.2.1"
 
+"@better-scroll/movable@^2.2.1":
+  version "2.2.1"
+  resolved "https://registry.npm.taobao.org/@better-scroll/movable/download/@better-scroll/movable-2.2.1.tgz?cache=0&sync_timestamp=1614861892366&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40better-scroll%2Fmovable%2Fdownload%2F%40better-scroll%2Fmovable-2.2.1.tgz#8bd55bf3e55275f3cea0b61a8d0ffbfab62d9a8d"
+  integrity sha1-i9Vb8+VSdfPOoLYajQ/7+rYtmo0=
+  dependencies:
+    "@better-scroll/core" "^2.2.1"
+
+"@better-scroll/nested-scroll@^2.2.1":
+  version "2.2.1"
+  resolved "https://registry.npm.taobao.org/@better-scroll/nested-scroll/download/@better-scroll/nested-scroll-2.2.1.tgz?cache=0&sync_timestamp=1614863057221&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40better-scroll%2Fnested-scroll%2Fdownload%2F%40better-scroll%2Fnested-scroll-2.2.1.tgz#61f86d113dccff49a598199c07a564c765337285"
+  integrity sha1-YfhtET3M/0mlmBmcB6Vkx2UzcoU=
+  dependencies:
+    "@better-scroll/core" "^2.2.1"
+
 "@better-scroll/pull-down@^2.2.1":
   version "2.2.1"
   resolved "https://registry.npm.taobao.org/@better-scroll/pull-down/download/@better-scroll/pull-down-2.2.1.tgz?cache=0&sync_timestamp=1614861892237&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40better-scroll%2Fpull-down%2Fdownload%2F%40better-scroll%2Fpull-down-2.2.1.tgz#4c6b63612b595e6e1b9ea98e178f952f98e667fe"
@@ -1903,15 +1917,6 @@ babel-plugin-import@^1.13.3:
     "@babel/helper-module-imports" "^7.0.0"
     "@babel/runtime" "^7.0.0"
 
-babel-plugin-jsx-v-model@^2.0.3:
-  version "2.0.3"
-  resolved "https://registry.npm.taobao.org/babel-plugin-jsx-v-model/download/babel-plugin-jsx-v-model-2.0.3.tgz#c396416b99cb1af782087315ae1d3e62e070f47d"
-  integrity sha1-w5ZBa5nLGveCCHMVrh0+YuBw9H0=
-  dependencies:
-    babel-plugin-syntax-jsx "^6.18.0"
-    html-tags "^2.0.0"
-    svg-tags "^1.0.0"
-
 babel-plugin-polyfill-corejs2@^0.1.4:
   version "0.1.10"
   resolved "https://registry.npm.taobao.org/babel-plugin-polyfill-corejs2/download/babel-plugin-polyfill-corejs2-0.1.10.tgz#a2c5c245f56c0cac3dbddbf0726a46b24f0f81d1"
@@ -1935,11 +1940,6 @@ babel-plugin-polyfill-regenerator@^0.1.2:
   integrity sha1-D+BqAm/g+qYozMi6MwLaCmzgLz8=
   dependencies:
     "@babel/helper-define-polyfill-provider" "^0.1.5"
-
-babel-plugin-syntax-jsx@^6.18.0:
-  version "6.18.0"
-  resolved "https://registry.npm.taobao.org/babel-plugin-syntax-jsx/download/babel-plugin-syntax-jsx-6.18.0.tgz#0af32a9a6e13ca7a3fd5069e62d7b0f58d0d8946"
-  integrity sha1-CvMqmm4Tyno/1QaeYtew9Y0NiUY=
 
 babel-plugin-syntax-object-rest-spread@^6.8.0:
   version "6.13.0"

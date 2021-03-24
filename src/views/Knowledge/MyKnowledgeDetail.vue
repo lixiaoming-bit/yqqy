@@ -29,8 +29,9 @@ export default {
         const { id, type } = this.$route.params
         const data = { id, type }
         const res = await repoDetail(data)
-        console.log('res: ', res)
-        yaml2Json(res.data.toc_yml)
+        const target = yaml2Json(res.data.toc_yml)
+        const result = target.filter(item => item.type === 'DOC')
+        console.log('result: ', result)
       } catch (err) {
         console.log('err: ', err)
       }

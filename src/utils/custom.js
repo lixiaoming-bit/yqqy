@@ -8,6 +8,5 @@ export function randomString(length) {
 
 export function yaml2Json(content) {
   let yaml = require('js-yaml')
-  let result = yaml.load(content)
-  console.log('result: ', result)
+  return yaml.load(content)
 }

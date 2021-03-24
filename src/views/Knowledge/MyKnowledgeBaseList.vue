@@ -58,6 +58,7 @@
         </div>
       </div>
     </mu-list>
+    <mu-drawer placement="top"></mu-drawer>
   </list>
 </template>
 

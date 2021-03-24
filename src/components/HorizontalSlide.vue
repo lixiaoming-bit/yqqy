@@ -7,9 +7,9 @@
           class="scroll-item"
           value="delete"
           style="border-right; 1px solid #f1f2f3"
-          @tap="publish('delete')"
+          @tap.stop="publish('delete')"
         ></mu-icon>
-        <mu-icon class="scroll-item" value="edit" @tap="publish('edit')"></mu-icon>
+        <mu-icon class="scroll-item" value="edit" @tap.stop="publish('edit')"></mu-icon>
       </div>
     </div>
   </div>
@@ -47,6 +47,7 @@ export default {
     ...mapMutations(['SET_SCROLL_ACTION']),
     init() {
       this.bs = new BScroll(this.$refs.scroll, {
+        useTransition: false,
         scrollX: true,
         bounce: {
           left: false,
