@@ -4,25 +4,21 @@
       <mu-icon value="menu" size="22"></mu-icon>
     </mu-button>
     <div class="header-content-wrap" ref="btn" @click="open = !open">
-      <div class="title">轻语</div>
+      <div class="title">{{ knowledgeDefaltLabel }}</div>
       <div class="triangle"></div>
     </div>
     <mu-popover cover :open.sync="open" :trigger="trigger" v-elevation="1">
+      <!-- v-click-outside="handlePopoverOutside" -->
       <mu-list>
-        <mu-list-item button>
-          <mu-list-item-title>Refresh</mu-list-item-title>
-        </mu-list-item>
-        <mu-list-item button>
-          <mu-list-item-title>Send feedback</mu-list-item-title>
-        </mu-list-item>
-        <mu-list-item button>
-          <mu-list-item-title>Settings</mu-list-item-title>
-        </mu-list-item>
-        <mu-list-item button>
-          <mu-list-item-title>Help</mu-list-item-title>
-        </mu-list-item>
-        <mu-list-item button>
-          <mu-list-item-title>Sign out</mu-list-item-title>
+        <mu-list-item
+          button
+          v-for="item in typeList"
+          :key="item.id"
+          style="width: 130px"
+          @click="handleTypeChange(item)"
+        >
+          <mu-icon :value="DOCUMENT_TYPE_ICON[item.key]" style="margin-right: 15px"></mu-icon>
+          <mu-list-item-title>{{ item.label }}</mu-list-item-title>
         </mu-list-item>
       </mu-list>
     </mu-popover>
@@ -37,6 +33,8 @@
 
 <script>
 import { mapMutations, mapState } from 'vuex'
+
+import { DOCUMENT_TYPE, DOCUMENT_TYPE_ICON } from '@/config'
 export default {
   name: 'Header',
   filters: {},
@@ -44,14 +42,19 @@ export default {
   props: {},
   data() {
     return {
+      DOCUMENT_TYPE_ICON,
       open: false,
       trigger: null
     }
   },
   computed: {
     ...mapState({
-      drawer: state => state.app.drawer
-    })
+      drawer: state => state.app.drawer,
+      knowledgeDefaltLabel: state => state.app.globalConfig?.knowledgeDefaltType?.label || '所有'
+    }),
+    typeList() {
+      return [{ id: 1234, label: '所有', value: 'all', key: 'all' }, ...DOCUMENT_TYPE]
+    }
   },
   watch: {},
   mounted() {
@@ -59,12 +62,21 @@ export default {
   },
   created() {},
   methods: {
-    ...mapMutations(['TOGGLE_DRAWER', 'REFRESH']),
+    ...mapMutations(['TOGGLE_DRAWER', 'REFRESH', 'SET_GLOBAL_CONFIG']),
     handleToggle() {
       this.TOGGLE_DRAWER(!this.drawer)
     },
     handleRefresh() {
       this.REFRESH(true)
+    },
+    handleTypeChange({ value, label }) {
+      this.SET_GLOBAL_CONFIG({
+        knowledgeDefaltType: { value, label }
+      })
+      this.open = false
+    },
+    handlePopoverOutside() {
+      this.open = false
     }
   }
 }

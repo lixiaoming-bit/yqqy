@@ -11,7 +11,7 @@ const routes = [
     meta: {
       keepAlive: false
     },
-    component: () => import(/* webpackChunkName: "about" */ '@/views/Home'),
+    component: () => import(/* webpackChunkName: "Home" */ '@/views/Home'),
     children: [
       {
         meta: {
@@ -20,14 +20,23 @@ const routes = [
         path: '/my-knowledge-base-list',
         name: 'MyKnowledgeBaseList',
         component: () =>
-          import(/* webpackChunkName: "about" */ '@/views/Knowledge/MyKnowledgeBaseList')
+          import(/* webpackChunkName: "Knowledge" */ '@/views/Knowledge/MyKnowledgeBaseList')
+      },
+      {
+        meta: {
+          keepAlive: false
+        },
+        path: '/my-knowledge-detail',
+        name: 'MyKnowledgeDetail',
+        component: () =>
+          import(/* webpackChunkName: "Knowledge" */ '@/views/Knowledge/MyKnowledgeDetail')
       }
     ]
   },
   {
     path: '/login',
     name: 'Login',
-    component: () => import(/* webpackChunkName: "about" */ '@/views/Login')
+    component: () => import(/* webpackChunkName: "login" */ '@/views/Login')
   }
 ]
 

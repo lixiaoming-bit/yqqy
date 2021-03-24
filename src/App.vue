@@ -12,17 +12,22 @@
 </template>
 <script>
 import { mapActions, mapMutations } from 'vuex'
+
+import { DEFAULT_GLOBAL_CONFIG } from '@/config'
+
 export default {
   name: 'App',
   created() {
     this.checkCache()
   },
   methods: {
-    ...mapMutations(['SET_TOKEN']),
+    ...mapMutations(['SET_TOKEN', 'SET_GLOBAL_CONFIG']),
     ...mapActions(['getUserInfo']),
     checkCache() {
       console.log('this.$ls: ', this.$ls)
       const TOKEN = this.$ls.get('TOKEN')
+      const gloablConfig = this.$ls.get('globalConfig', DEFAULT_GLOBAL_CONFIG)
+      this.SET_GLOBAL_CONFIG(gloablConfig)
       if (!TOKEN) {
         this.$router.push({ path: '/login' })
         return

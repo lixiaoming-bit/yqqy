@@ -4,8 +4,7 @@
     <!-- <div class="view-wrap" :style="contentHeight"></div> -->
     <router-view />
     <Drawer />
-    <!-- fab button -->
-    <mu-button fab color="teal" class="fab-btn">
+    <mu-button fab color="teal" class="fab-btn" @click="handleAdd">
       <mu-icon value="add"></mu-icon>
     </mu-button>
   </div>
@@ -15,6 +14,7 @@
 import { Header, Drawer } from '@/components'
 
 import { getUserInfo } from '@/api/user'
+import { mapMutations } from 'vuex'
 
 export default {
   name: 'Home',
@@ -33,6 +33,11 @@ export default {
     // }
   },
   methods: {
+    ...mapMutations(['SET_ACTION']),
+    handleAdd() {
+      const data = { current: 'knowledgeList', action: 'add' }
+      this.SET_ACTION(data)
+    },
     async _getUserInfo() {
       try {
         const res = await getUserInfo()
@@ -47,7 +52,7 @@ export default {
 <style scoped lang="less">
 .fab-btn {
   position: fixed;
-  right: 30px;
   bottom: 30px;
+  right: 30px;
 }
 </style>
