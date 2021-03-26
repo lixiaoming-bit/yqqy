@@ -116,7 +116,7 @@ export default {
     this.getRepoList()
   },
   methods: {
-    ...mapMutations(['SET_ACTION']),
+    ...mapMutations(['SET_ACTION', 'OPEN_DETAIL']),
     ...mapActions(['getRepoList', 'deleteRepo', 'editRepo', 'addRepo', 'editRepo']),
     handleAction(text, item) {
       const { name, description, id } = item
@@ -140,8 +140,10 @@ export default {
       }
     },
     handleCheckDetail({ id, type }) {
-      console.log('123')
-      this.$router.push({ name: 'MyKnowledgeDetail', params: { id, type } })
+      const data = { open: true, id, type }
+      this.OPEN_DETAIL(data)
+      // console.log('123')
+      // this.$router.push({ name: 'MyKnowledgeDetail', params: { id, type } })
     },
     _handleBeforeClose(id, result, instance) {
       if (result) {

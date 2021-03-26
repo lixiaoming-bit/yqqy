@@ -1,7 +1,8 @@
 import { getUserRepos, deleteRepo, addRepo, editRepo } from '@/api/repo'
 export default {
   state: {
-    repoList: []
+    repoList: [],
+    knowledgeDetail: {}
   },
   actions: {
     getRepoList({ commit }, params = {}) {
@@ -32,6 +33,9 @@ export default {
     }
   },
   mutations: {
+    OPEN_DETAIL(state, payload) {
+      state.knowledgeDetail = payload
+    },
     SET_REPO_LIST(state, payload) {
       state.repoList = payload
     }

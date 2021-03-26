@@ -21,11 +21,24 @@
 
 <script>
 import BScroll from '@better-scroll/core'
+import { mapState } from 'vuex'
 export default {
   name: 'CustomDrawer',
   data() {
     return {
       bs: null
+    }
+  },
+  computed: {
+    ...mapState({
+      open: state => state.repo.knowledgeDetail?.open || false
+    })
+  },
+  watch: {
+    open(val) {
+      if (val) {
+        this.bs.scrollTo(0, -this.height, 300, undefined)
+      }
     }
   },
   mounted() {
@@ -62,6 +75,7 @@ export default {
     overflow: hidden;
     .ignore-content {
       height: 100vh;
+      position: relative;
     }
     .scroll-content {
       height: 200vh;

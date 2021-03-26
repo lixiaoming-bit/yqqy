@@ -5,6 +5,9 @@
       <!-- <div class="view-wrap" :style="contentHeight"></div> -->
       <router-view />
       <Drawer />
+      <mu-button fab color="teal" class="fab-btn" @click="handleAdd">
+        <mu-icon value="add"></mu-icon>
+      </mu-button>
     </div>
   </custom-drawer>
 </template>
